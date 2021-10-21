@@ -68,4 +68,29 @@ myArray.reduce((accumulator, value) => accumulator + value, initialValue);
 
 
 // ----------------------------------------------------------------------------------
-// 4.
+// 4. Write "MyPartialNew" to create an object "homeTask"
+
+interface IHomeTask {
+	data: string;
+	numbericData: number;
+	date: Date;
+	externalData: {
+		basis: number;
+		value: string;
+	}
+}
+
+type MyPartialNew<T> = {
+	[N in keyof T]?: T[N] extends object ? MyPartialNew<T[N]> : T[N];
+}
+
+const homeTask: MyPartialNew<IHomeTask> = {
+	externalData: {
+		value: 'win'
+	}
+}
+
+
+
+// ----------------------------------------------------------------------------------
+// 5.
