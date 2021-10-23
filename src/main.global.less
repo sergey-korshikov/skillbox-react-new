@@ -1,14 +1,18 @@
 :root {
 	--black:  #333;
-	--white:  #fff;
 	--orange: #c63;
 	--green:  #a4cc33;
-	--greyF3: #f3f3f3;
-	--greyF4: #f4f4f4;
-	--greyD9: #d9d9d9;
-	--greyC4: #c4c4c4;
-	--grey99: #999;
-	--grey66: #666;
+
+	--whiteLightness: 100%;
+
+	--white:  hsl(0, 0%, var(--whiteLightness));
+
+	--greyF4: hsl(0, 0%, calc(var(--whiteLightness) - 4%));
+	--greyF3: hsl(0, 0%, calc(var(--whiteLightness) - 5%));
+	--greyD9: hsl(0, 0%, calc(var(--whiteLightness) - 15%));
+	--greyC4: hsl(0, 0%, calc(var(--whiteLightness) - 23%));
+	--grey99: hsl(0, 0%, calc(var(--whiteLightness) - 40%));
+	--grey66: hsl(0, 0%, calc(var(--whiteLightness) - 60%));
 }
 
 * {
@@ -23,4 +27,10 @@ body {
 	font-size: 14px;
 	line-height: 16px;
 	font-family: serif;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

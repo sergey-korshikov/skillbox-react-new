@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 const NODE_ENV = process.env.NODE_ENV;
-const GLOBAL_CSS_REGEXP = /\.global\.less$/;
+const GLOBAL_LESS_REGEXP = /\.global\.less$/;
 
 module.exports = {
 	target: 'node',
@@ -30,18 +30,19 @@ module.exports = {
 						options: {
 							modules: {
 								mode: 'local',
-								localIdentName: '[name]__[local]--[hash:base64:5]',
+								// localIdentName: '[name]__[local]--[hash:base64:5]',
+								localIdentName: '[local]--[hash:base64:5]',
 							},
 							onlyLocals: true,
 						}
 					},
 					'less-loader',
 				],
-				exclude: GLOBAL_CSS_REGEXP
+				exclude: GLOBAL_LESS_REGEXP
 			},
 			{
-				test: GLOBAL_CSS_REGEXP,
-				use: ['style-loader', 'css-loader', 'less-loader']
+				test: GLOBAL_LESS_REGEXP,
+				use: ['css-loader', 'less-loader']
 			}
 		]
 	},
