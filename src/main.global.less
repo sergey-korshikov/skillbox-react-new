@@ -1,18 +1,15 @@
 :root {
+	--white:  #fff;
 	--black:  #333;
 	--orange: #c63;
 	--green:  #a4cc33;
 
-	--whiteLightness: 100%;
-
-	--white:  hsl(0, 0%, var(--whiteLightness));
-
-	--greyF4: hsl(0, 0%, calc(var(--whiteLightness) - 4%));
-	--greyF3: hsl(0, 0%, calc(var(--whiteLightness) - 5%));
-	--greyD9: hsl(0, 0%, calc(var(--whiteLightness) - 15%));
-	--greyC4: hsl(0, 0%, calc(var(--whiteLightness) - 23%));
-	--grey99: hsl(0, 0%, calc(var(--whiteLightness) - 40%));
-	--grey66: hsl(0, 0%, calc(var(--whiteLightness) - 60%));
+	--greyF3: #f3f3f3;
+	--greyF4: #f4f4f4;
+	--greyD9: #d9d9d9;
+	--greyC4: #c4c4c4;
+	--grey99: #999;
+	--grey66: #666;
 }
 
 * {
@@ -26,11 +23,22 @@ body {
 	background-color: var(--greyF4);
 	font-size: 14px;
 	line-height: 16px;
-	font-family: serif;
+	font-family: 'Roboto', serif;
 }
 
 ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	border: none;
 }
