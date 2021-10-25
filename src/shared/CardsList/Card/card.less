@@ -43,16 +43,20 @@
 	color: var(--orange);
 }
 
-.createdAt, .createdAt * {
+.createdAt {
 	color: var(--grey99);
+	span {
+		display: none;
+	}
 }
 
 .title {
+	width: 100%;
 	font-size: 16px;
 	line-height: 19px;
 	font-weight: normal;
-	margin: 0;
 	padding: 7px 0 0;
+	margin: 0;
 }
 
 .postLink {
@@ -100,11 +104,15 @@
 .controls {
 	padding: 10px 20px;
 	display: flex;
+	align-items: center;
 	flex-flow: row nowrap;
 	justify-content: space-between;
 }
 
 .karmaCounter {
+	display: flex;
+	align-items: center;
+	margin-right: 15px;
 	svg {
 		fill: var(--greyC4);
 	}
@@ -113,4 +121,43 @@
 .karmaValue {
 	color: var(--greyC4);
 	margin: 0 4px;
+}
+
+.commentsButton {
+ display: flex;
+ align-items: center;
+ margin-left: auto;
+ & * {
+	 color: var(--greyC4);
+ }
+}
+
+.commentsNumber {
+	padding: 0 0 0 6px;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.actions {
+	display: flex;
+	margin-left: auto;
+	& > * {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		margin-left: 15px;
+		border-radius: 50%;
+		background-color: var(--greyC4);
+	}
+	svg {
+		fill: #fff;
+	}
+}
+
+.shareButton {
+	svg {
+		padding-right: 2px;
+	}
 }
