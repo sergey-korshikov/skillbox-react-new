@@ -72,7 +72,7 @@ type AllJsSimpleTypes = string | number | [] | object | undefined | null | boole
 // Array
 // const tsArray: number[] = [1, 2, '3']; // error: '3' - string
 const tsArray: number[] = [1, 2, 3];
-const tsArrayGeneric: Array<number> = [];
+const tsArrayGeneric: Array<number> = [1, 2, 3];
 // эти записи идентичный
 
 const unionArray: (string | number)[] = [1, 2, 's'];
@@ -111,14 +111,14 @@ interface MyFirstInterface {
 	b: string;
 	c: number[];
 	d?: number[]; // ? лучше не исп без необходимости
-	e: number[] | undefined; // не эквивалентна предыдущей переменной, все равно необходимо декларировать
+	e: number[] | undefined; // не эквивалентна предыдущей переменной, undefined - все равно необходимо декларировать
 }
 
 const myObj3: MyFirstInterface = {
 	a: 2,
 	b: '123',
 	c: [1],
-	e: undefined // необходимо декларировать все равно
+	e: undefined // undefined - необходимо декларировать все равно
 }
 
 // Object.keys(myObj3);
