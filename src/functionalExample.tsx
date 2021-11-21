@@ -1,5 +1,5 @@
 import React from 'react';
-import { pickFromSyntheticEvent } from './utils/react/pickFromSyntheticEvent';
+import { getValue, getChecked } from './utils/react/pickFromSyntheticEvent';
 import { preventAll } from './utils/react/preventAll';
 import { preventDefault } from './utils/react/preventDefault';
 import { stopPropagation } from './utils/react/stopPropagation';
@@ -97,9 +97,6 @@ function CheckboxUp({ onChange, value }: { onChange: (value: boolean) => void, v
 		<input type="checkbox" checked={value} onChange={getChecked(onChange)} />
 	)
 }
-
-export const getValue = pickFromSyntheticEvent<HTMLInputElement>()('value');
-export const getChecked = pickFromSyntheticEvent<HTMLInputElement>()('checked');
 
 // example 3
 
