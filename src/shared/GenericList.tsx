@@ -3,20 +3,20 @@ import React from 'react';
 // локальный onClick
 
 // interface IItem {
-// 	value: string;
+// 	text: string;
 // 	id: string;
 // 	onClick: () => void;
 // }
 
-// interface IMyListProps {
+// interface IGenericListProps {
 // 	list: IItem[];
 // }
 
-// export function MyList({ list }: IMyListProps) {
+// export function GenericList({ list }: IGenericListProps) {
 // 	return (
 // 		<ul>
 // 			{list.map((item) => (
-// 				<li onClick={item.onClick} key={item.id}>{item.value}</li>
+// 				<li onClick={item.onClick} key={item.id}>{item.text}</li>
 // 			))}
 // 		</ul>
 // 	)
@@ -26,20 +26,20 @@ import React from 'react';
 // глобавльный onClick
 
 // interface IItem {
-// 	value: string;
+// 	text: string;
 // 	id: string;
 // }
 
-// interface IMyListProps {
+// interface IGenericListProps {
 // 	list: IItem[];
 // 	onClick: (id: string) => void;
 // }
 
-// export function MyList({ list, onClick }: IMyListProps) {
+// export function GenericList({ list, onClick }: IGenericListProps) {
 // 	return (
 // 		<ul>
 // 			{list.map((item) => (
-// 				<li onClick={() => onClick(item.id)} key={item.id}>{item.value}</li>
+// 				<li onClick={() => onClick(item.id)} key={item.id}>{item.text}</li>
 // 			))}
 // 		</ul>
 // 	)
@@ -48,21 +48,43 @@ import React from 'react';
 
 // с merge
 interface IItem {
-	value: string;
 	id: string;
+	text: string;
 	onClick: (id: string) => void;
+	className?: string;
+	As?: 'a' | 'li' | 'button' | 'div';
+	href?: string;
 }
 
-interface IMyListProps {
+interface IGenericListProps {
 	list: IItem[];
 }
 
-export function MyList({ list }: IMyListProps) {
+// export function GenericList({ list }: IGenericListProps) {
+// 	return (
+// 		<ul>
+// 			{list.map((item) => (
+// 				<li onClick={() => item.onClick(item.id)} key={item.id}>{item.text}</li>
+// 			))}
+// 		</ul>
+// 	)
+// }
+
+const noop = () => {};
+
+export function GenericList({ list }: IGenericListProps) {
 	return (
-		<ul>
-			{list.map((item) => (
-				<li onClick={() => item.onClick(item.id)} key={item.id}>{item.value}</li>
+		<>
+			{list.map(({ As = 'div', text, onClick = noop, className, id, href }) => (
+				<As
+					className={className}
+					onClick={() => onClick(id)}
+					key={id}
+					href={href}
+				>
+					{text}
+				</As>
 			))}
-		</ul>
+		</>
 	)
 }

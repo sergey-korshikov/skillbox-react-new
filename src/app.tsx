@@ -36,19 +36,29 @@ import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList';
 import { generateId } from './utils/react/generateRandomIndex';
-import { MyList } from './shared/GenericList';
+import { GenericList } from './shared/GenericList';
 import { merge } from './utils/js/merge';
+import { generateRandomString } from './utils/react/generateRandomIndex';
 
 const LIST = [
-	{ value: 'some' },
-	{ value: 'other some' },
-	{ value: 'some' },
+	{ As: 'li' as const, text: 'some' },
+	{ As: 'li' as const, text: 'other some' },
+	{ As: 'li' as const, text: 'some' },
 ].map(generateId);
 
 function AppComponent() {
-	const handleItemClick = (id: string) => {
-		console.log(id);
+	const [list, setList] = React.useState(LIST);
+	// устанавливаем текущее состояние как LIST
+
+	const handleRemoveItem = (id: string) => {
+		setList(list.filter((item) => item.id != id));
 	}
+
+	const handleAddItem = () => {
+		setList(list.concat(generateId({ text: generateRandomString(), As: 'li' as const })));
+	}
+	// по клику меняем состояние списка
+	// далее возвращаем обновленный список
 
 	return (
 		<Layout>
@@ -56,16 +66,20 @@ function AppComponent() {
 			<Content>
 				<CardsList />
 				{/* локальный onClick */}
-				{/* <MyList list={LIST.map((item) => ({ ...item, onClick: () => { console.log(item.id) } }))} /> */}
+				{/* <GenericList list={LIST.map((item) => ({ ...item, onClick: () => { console.log(item.id) } }))} /> */}
 
 				{/* глобавльный onClick */}
-				{/* <MyList list={LIST} onClick={console.log} /> */}
+				{/* <GenericList list={LIST} onClick={console.log} /> */}
 
 				{/* с merge */}
-				<MyList list={LIST.map(merge({ onClick: handleItemClick }))} />
+				<button onClick={handleAddItem}>Add element</button>
+				<ul>
+					<GenericList list={list.map(merge({ onClick: handleRemoveItem }))} />
+				</ul>
 			</Content>
 		</Layout>
 	);
 }
 
-export const App = hot(AppComponent);
+// export const App = hot(AppComponent);
+export const App = hot(() => <AppComponent />);
