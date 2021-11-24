@@ -35,28 +35,29 @@ import { Layout } from './shared/Layout';
 import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList';
-import { generateId } from './utils/react/generateRandomIndex';
+// import { generateId } from './utils/react/generateRandomIndex';
 import { GenericList } from './shared/GenericList';
-import { merge } from './utils/js/merge';
-import { generateRandomString } from './utils/react/generateRandomIndex';
+// import { merge } from './utils/js/merge';
+// import { generateRandomString } from './utils/react/generateRandomIndex';
+import { Dropdown } from './shared/Dropdown';
 
-const LIST = [
-	{ As: 'li' as const, text: 'some' },
-	{ As: 'li' as const, text: 'other some' },
-	{ As: 'li' as const, text: 'some' },
-].map(generateId);
+// const LIST = [
+// 	{ As: 'li' as const, text: 'some' },
+// 	{ As: 'li' as const, text: 'other some' },
+// 	{ As: 'li' as const, text: 'some' },
+// ].map(generateId);
 
 function AppComponent() {
-	const [list, setList] = React.useState(LIST);
-	// устанавливаем текущее состояние как LIST
+	// const [list, setList] = React.useState(LIST);
+	// // устанавливаем текущее состояние как LIST
 
-	const handleRemoveItem = (id: string) => {
-		setList(list.filter((item) => item.id != id));
-	}
+	// const handleRemoveItem = (id: string) => {
+	// 	setList(list.filter((item) => item.id != id));
+	// }
 
-	const handleAddItem = () => {
-		setList(list.concat(generateId({ text: generateRandomString(), As: 'li' as const })));
-	}
+	// const handleAddItem = () => {
+	// 	setList(list.concat(generateId({ text: generateRandomString(), As: 'li' as const })));
+	// }
 	// по клику меняем состояние списка
 	// далее возвращаем обновленный список
 
@@ -72,10 +73,22 @@ function AppComponent() {
 				{/* <GenericList list={LIST} onClick={console.log} /> */}
 
 				{/* с merge */}
-				<button onClick={handleAddItem}>Add element</button>
+				{/* <button onClick={handleAddItem}>Add element</button>
 				<ul>
 					<GenericList list={list.map(merge({ onClick: handleRemoveItem }))} />
-				</ul>
+				</ul> */}
+				<br />
+				<Dropdown
+					onClose={() => console.log('closed')}
+					onOpen={() => console.log('opened')}
+					isOpen={false}
+					button={<button>Test</button>}
+				>
+					{/* <GenericList list={[]} /> */}
+					<ul>
+						<li>1</li>
+					</ul>
+				</Dropdown>
 			</Content>
 		</Layout>
 	);

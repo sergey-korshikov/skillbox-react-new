@@ -72,6 +72,7 @@ interface IGenericListProps {
 
 const noop = () => {};
 
+// универсальная функция создания списков
 export function GenericList({ list }: IGenericListProps) {
 	return (
 		<>
