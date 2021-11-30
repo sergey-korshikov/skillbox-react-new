@@ -36,7 +36,7 @@ import { Header } from './shared/Header';
 import { Content } from './shared/Content';
 import { CardsList } from './shared/CardsList';
 // import { generateId } from './utils/react/generateRandomIndex';
-import { GenericList } from './shared/GenericList';
+import { GenericList } from './utils/react/GenericList';
 // import { merge } from './utils/js/merge';
 // import { generateRandomString } from './utils/react/generateRandomIndex';
 import { Dropdown } from './shared/Dropdown';
