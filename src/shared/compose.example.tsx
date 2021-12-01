@@ -22,6 +22,7 @@ function InputExample({ value, onChange }: any) {
 	)
 }
 
+// типизация упрощена
 function compose<U>(...fns: Function[]) {
 	return <E,>(initialValue: any): U =>
 		fns.reduceRight((previousValue, fn) => fn(previousValue), initialValue);
@@ -37,7 +38,7 @@ function pick<K extends string>(prop: K) {
 	return <O extends Record<K, any>>(obj: O) => obj[prop];
 }
 
-const some = pick('value')({value: 1}); // -> 1
+pick('value')({value: 1}); // -> 1
 
 function isEqual<T>(left: T) {
 	return <E extends T>(right: E) => left === right;
@@ -81,3 +82,13 @@ const filterByValueCreated = createFilterBy('value');
 // пример фильтрации с использованием filterWithId
 comments.filter(filterByValueCreated(22)); // массив эл-ов с value !== 22
 
+// альтернатива pickFromSyntheticEvent
+// но проблема в типизации, pickFromSyntheticEvent очень хорошо типизирован
+// композицию же, очень сложно типизировать
+// для использования compose или pipe лучше использовать библиотеки с правильной типизацией (ramda.js, redux)
+// ramda.js используется для функционального программирования
+const getValueNumber = pipe<number>(
+	pick('currentTarget'),
+	pick('value'),
+	parseInt
+)
